@@ -7,23 +7,20 @@ pipeline{
         stage("build") {
 
             steps {
-            echo "building the application"
-            echo 'npm i'
-            echo 'npm run build'
-            echo "skipping build. Build already exists..."
+            sh 'npm i'
+            sh 'npm run build'
+           
 
             }
 
         }
 
 
-        stage("deploying") {
+        stage("deploy") {
 
             steps {
-            echo "deploying the application using ansible-playbook"
-	sh '''
-	ansible-playbook angular-app-deploy.yml --key-file /var/lib/jenkins/id_rsa
-	'''
+            
+	sh " ansible-playbook angular-app-deploy.yml --key-file /var/lib/jenkins/id_rsa "
 
             }
 
