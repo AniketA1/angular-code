@@ -1,13 +1,15 @@
 ---
-- hosts: node-server
+- hosts: all
   become: yes
   tasks:
+    - name: apache installing
+      package:
+        name: apache2
+        state: present
     - name: copy built files to deploy-server
-      synchronize:
-        src: /var/lib/jenkins/workspace/angular-app/dist/angular-hello-world/
+      copy:
+        src: /var/lib/jenkins/workspace/angular_test/angular-hello-world/
         dest: /var/www/html/
-        delete: true
-        recursive: true
 
     - name: restart apache
       systemd:
