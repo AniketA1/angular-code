@@ -19,10 +19,10 @@ phases:
       #- ng build --configuration production --aot
   post_build:
      commands:
-      - aws s3 sync /build s3://${S3_BUCKET}
+      - aws s3 sync dist s3://${S3_BUCKET}
       - echo "Build completed on `date`"
-#artifacts:
- # files:
-  #    - '**/*'
-  #base-directory: 'dist*'
-  #discard-paths: yes
+artifacts:
+  files:
+      - '**/*'
+  base-directory: 'dist*'
+  discard-paths: yes
