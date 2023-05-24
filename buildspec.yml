@@ -9,18 +9,20 @@ phases:
   pre_build:
     commands:
       - echo Installing source NPM dependencies...
-      - npm install --legacy-peer-deps
+      - npm install
+      #- npm install --legacy-peer-deps
       - npm install -g @angular/cli
   build:
     commands:
       - echo Build started on `date`
-      - ng build --configuration production --aot
+      - ng build 
+      #- ng build --configuration production --aot
   post_build:
      commands:
-      - aws s3 sync dist s3://${S3_BUCKET}
-      - echo Build completed on `date`
-artifacts:
-  files:
-      - '**/*'
-  base-directory: 'dist*'
-  discard-paths: yes
+      - aws s3 sync dist s3://angulartest123
+      - echo "Build completed on `date`"
+#artifacts:
+ # files:
+  #    - '**/*'
+  #base-directory: 'dist*'
+  #discard-paths: yes
