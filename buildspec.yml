@@ -19,7 +19,7 @@ phases:
       #- ng build --configuration production --aot
   post_build:
      commands:
-      - aws s3 sync dist s3://angulartest1234
+      - aws s3 sync ./build s3://angulartest1234
       - echo "Build completed on `date`"
 #artifacts:
  # files:
