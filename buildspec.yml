@@ -23,6 +23,7 @@ phases:
       - echo "Build completed on `date`"
       - aws s3 website s3://${S3_BUCKET} --index-document index.html 
       - aws s3api put-bucket-acl --bucket ${S3_BUCKET} --acl public-read
+      - aws s3api put-object-acl --bucket ${S3_BUCKET} --acl public-read
 artifacts:
   files:
       - '**/*'
