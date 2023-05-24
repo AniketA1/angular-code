@@ -1,7 +1,7 @@
 version: 0.2
 env:
   variables:
-    S3_BUCKET: "angular-site-first"
+    S3_BUCKET: "angulartest1234"
 phases:
   install:
     runtime-versions:
@@ -19,7 +19,7 @@ phases:
       #- ng build --configuration production --aot
   post_build:
      commands:
-      - aws s3 sync ./build s3://angulartest1234
+      - aws s3 sync ./build s3://${S3_BUCKET}
       - echo "Build completed on `date`"
 #artifacts:
  # files:
