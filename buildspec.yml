@@ -21,6 +21,7 @@ phases:
      commands:
       - aws s3 sync dist/angular-hello-world/ s3://${S3_BUCKET}
       - echo "Build completed on `date`"
+      - aws s3 website s3://${S3_BUCKET} --index-document index.html 
 artifacts:
   files:
       - '**/*'
