@@ -22,7 +22,9 @@ phases:
       - aws s3 sync dist/angular-hello-world/ s3://${S3_BUCKET}
       - echo "Build completed on `date`"
       - aws s3 website s3://${S3_BUCKET} --index-document index.html 
-      - aws s3api put-bucket-acl --bucket ${BUCKET_NAME} --acl public-read
+      - aws s3api put-object-acl --bucket ${BUCKET_NAME} --key OBJECT_KEY --acl public-read
+
+      #- aws s3api put-bucket-acl --bucket ${BUCKET_NAME} --acl public-read
 artifacts:
   files:
       - '**/*'
