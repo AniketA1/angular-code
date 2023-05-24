@@ -22,8 +22,9 @@ phases:
       - aws s3 sync dist/angular-hello-world/ s3://${S3_BUCKET}
       - echo "Build completed on `date`"
       - aws s3 website s3://${S3_BUCKET} --index-document index.html 
-      - aws s3api put-bucket-acl --bucket ${S3_BUCKET} --acl public-read
-      - aws s3api put-object-acl --bucket ${S3_BUCKET} --acl public-read
+      - aws cloudfront create-invalidation --distribution-id E1OQ3NP8XCRA0J --paths '/*'
+     
+
 artifacts:
   files:
       - '**/*'
