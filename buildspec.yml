@@ -1,7 +1,7 @@
 version: 0.2
 env:
-  variables:
-    S3_BUCKET: "angulartesting123"
+#  variables:
+#    S3_BUCKET: "angulartesting123"
 phases:
   install:
     runtime-versions:
@@ -19,11 +19,11 @@ phases:
       #- ng build --configuration production --aot
   post_build:
      commands:
-      - aws s3 sync dist/angular-hello-world/ s3://${S3_BUCKET}
-      - echo "Build completed on `date`"
-      - aws s3 website s3://${S3_BUCKET} --index-document index.html 
-      - aws cloudfront create-invalidation --distribution-id E3G8ICLROW9X0I --paths '/*'
-     
+    #  - aws s3 sync dist/angular-hello-world/ s3://${S3_BUCKET}
+     # - echo "Build completed on `date`"
+      #- aws s3 website s3://${S3_BUCKET} --index-document index.html 
+      #- aws cloudfront create-invalidation --distribution-id E3G8ICLROW9X0I --paths '/*'
+      - echo "post build......"
 
 artifacts:
   files:
